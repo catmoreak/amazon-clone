@@ -1,0 +1,169 @@
+/* Rufus Chatbot Custom Animations */
+
+/* Subtle hover effect for the icon */
+@keyframes gentle-bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+/* Remove aggressive floating animation */
+.rufus-icon-wrapper {
+    position: fixed;
+    transition: transform 0.2s ease;
+}
+
+.rufus-icon-wrapper:hover {
+    animation: gentle-bounce 1s ease-in-out;
+}
+
+/* Subtle glow effect on hover only */
+.rufus-icon-wrapper:hover > div > div {
+    box-shadow:
+        0 4px 20px rgba(255, 153, 0, 0.3),
+        0 0 40px rgba(255, 153, 0, 0.1);
+}
+
+/* Tooltip styling */
+.rufus-tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateX(-95%) translateY(-50%);
+    background: #232f3e;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    pointer-events: none;
+    margin-right: 8px;
+}
+
+.rufus-icon-wrapper:hover .rufus-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-100%) translateY(-50%);
+}
+
+.rufus-tooltip::after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-left-color: #232f3e;
+}
+
+/* Chat message animations */
+@keyframes slideInRight {
+    from {
+        transform: translateX(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.message-user {
+    animation: slideInRight 0.2s ease-out;
+}
+
+.message-rufus {
+    animation: slideInLeft 0.2s ease-out;
+}
+
+/* Typing indicator animation */
+@keyframes typing-dot {
+    0%,
+    80%,
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    40% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+.typing-dot {
+    animation: typing-dot 1.4s ease-in-out infinite;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Smooth transitions for chat window */
+.chat-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom scrollbar for chat messages */
+.rufus-chat-messages {
+    scrollbar-width: thin;
+    scrollbar-color: #ddd #f5f5f5;
+}
+
+.rufus-chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.rufus-chat-messages::-webkit-scrollbar-track {
+    background: #f5f5f5;
+    border-radius: 3px;
+}
+
+.rufus-chat-messages::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 3px;
+}
+
+.rufus-chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+}
+
+/* Fixed positioning to avoid footer overlap */
+@media (max-height: 700px) {
+    .rufus-icon-wrapper {
+        bottom: 10px !important;
+    }
+}
+
+/* Ensure chat window doesn't overlap with footer */
+.rufus-chat-window {
+    max-height: calc(100vh - 120px);
+}
+
+/* Professional shadow for the chat window */
+.rufus-chat-shadow {
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.15),
+        0 0 1px rgba(0, 0, 0, 0.1);
+}
