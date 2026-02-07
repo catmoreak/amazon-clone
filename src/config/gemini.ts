@@ -2,7 +2,7 @@
 // Note: In production, this should be stored in environment variables
 // Never commit API keys to version control
 
-export const GEMINI_API_KEY = "AIzaSyALI5Tm-GIhyaiV2yMVDsEF8LwSzRWinhM";
+export const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
 export const GEMINI_CONFIG = {
   model: "gemini-3-flash-preview",
